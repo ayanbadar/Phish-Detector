@@ -1,0 +1,16 @@
+<form method="POST">
+    {% csrf_token %}
+    {% if error %}<p style="color:red;">{{ error }}</p>{% endif %}
+    {% if message %}<p style="color:green;">{{ message }}</p>{% endif %}
+  
+    {% if otp_sent %}
+      <label>Enter OTP:</label>
+      <input type="text" name="otp" required />
+      <button type="submit">Verify OTP</button>
+    {% endif %}
+  
+    {% if resend_available %}
+      <button type="submit" name="resend" value="1">Resend OTP ({{ max_resends|add:"-resend_count" }} left)</button>
+    {% endif %}
+  </form>
+  
