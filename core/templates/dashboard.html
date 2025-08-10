@@ -1,0 +1,21 @@
+<!-- dashboard.html -->
+{% load static %}
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <input name="url" placeholder="Enter URL to check">
+        <button type="submit">Check</button>
+    </form>
+    {% if result %}
+    <p>Result: {{ result }}</p>
+    {% endif %}
+</body>
+
+</html>
